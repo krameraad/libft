@@ -6,7 +6,7 @@
 /*   By: ekramer <ekramer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 11:52:49 by ekramer           #+#    #+#             */
-/*   Updated: 2025/10/29 19:50:27 by ekramer          ###   ########.fr       */
+/*   Updated: 2025/10/29 21:34:14 by ekramer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	const char	*p_src;
 
 	if (dest == src)
-		return (NULL);
+		return (dest);
 	p_dest = dest;
 	p_src = src;
 	while (n > 0)
