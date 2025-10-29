@@ -6,21 +6,24 @@
 /*   By: ekramer <ekramer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 14:12:51 by ekramer           #+#    #+#             */
-/*   Updated: 2025/10/28 20:39:26 by ekramer          ###   ########.fr       */
+/*   Updated: 2025/10/29 20:50:15 by ekramer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// CHECK IF IT STILL WORKS!! MALLOC TOO MUCH?
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*str;
 	size_t	size;
 
-	size = ft_strlen(s + start) + 1;
+	if (start >= ft_strlen(s))
+		return (ft_calloc(1, sizeof(char)));
+	size = ft_strlen(s + start);
 	if (size > len)
 		size = len;
+	if (size < len)
+		len = size;
 	str = malloc((size + 1) * sizeof(*s));
 	if (str == NULL)
 		return (NULL);

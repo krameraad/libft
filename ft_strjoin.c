@@ -6,7 +6,7 @@
 /*   By: ekramer <ekramer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:25:11 by ekramer           #+#    #+#             */
-/*   Updated: 2025/10/28 17:01:44 by ekramer          ###   ########.fr       */
+/*   Updated: 2025/10/29 19:21:51 by ekramer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t		s1_size;
 	size_t		s2_size;
 
-	if (!s1 || !s2)
-		return (NULL);
 	s1_size = ft_strlen(s1);
 	s2_size = ft_strlen(s2);
 	newstr = malloc(s1_size + s2_size + 1);

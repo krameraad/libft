@@ -6,7 +6,7 @@
 /*   By: ekramer <ekramer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 14:35:49 by ekramer           #+#    #+#             */
-/*   Updated: 2025/10/28 20:16:27 by ekramer          ###   ########.fr       */
+/*   Updated: 2025/10/29 20:32:29 by ekramer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static size_t	find_trimend(char const *s1, char const *set)
 	size_t	j;
 
 	if (*s1 == '\0')
-		return (1);
+		return (0);
 	i = ft_strlen(s1) - 1;
 	j = 0;
 	while (i >= 0 && set[j])
@@ -62,7 +62,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	s1 = find_trimstart(s1, set);
 	size = find_trimend(s1, set);
-	str = malloc(size + 1);
+	str = malloc((size + 1) * sizeof(char));
 	if (str == NULL)
 		return (NULL);
 	ft_strlcpy(str, s1, size + 1);
