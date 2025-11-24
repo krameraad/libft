@@ -6,7 +6,7 @@
 /*   By: ekramer <ekramer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 16:34:29 by ekramer           #+#    #+#             */
-/*   Updated: 2025/11/24 21:38:30 by ekramer          ###   ########.fr       */
+/*   Updated: 2025/11/24 22:26:20 by ekramer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 # include <unistd.h>
 /* Used for `malloc()`, `free()` */
 # include <stdlib.h>
+/* Used for `va_list` */
+# include <stdarg.h>
+
+# define UPPERCASE 1
+# define LOWERCASE 0
 
 typedef struct s_list
 {
@@ -203,10 +208,10 @@ void	*ft_calloc(size_t nmemb, size_t size);
 /* Returns a pointer to a new string,
 which is a duplicate of the string `s`.
 Memory for the new string is obtained with `malloc(3)`.
-@param src String to duplicate.
-@return Pointer to a new string which is a duplicate of `src`.
+@param s String to duplicate.
+@return Pointer to a new string which is a duplicate of `s`.
 It returns `NULL` if insufficient memory was available. */
-char	*ft_strdup(const char *src);
+char	*ft_strdup(const char *s);
 
 /*
 PART 2
@@ -233,9 +238,9 @@ new string, which is the result of concatenating `s1` and `s2`.
 char	*ft_strjoin(const char *s1, const char *s2);
 
 /* Allocates memory using `malloc(3)` and returns
-a copy of `s1` with characters from `set` removed
+a copy of `s` with characters from `set` removed
 from the beginning and the end.
-@param s1 String to be trimmed.
+@param s String to be trimmed.
 @param set String containing the set of characters to be removed.
 @return Pointer to a new, trimmed string.
 `NULL` if the allocation fails. */
@@ -281,26 +286,26 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 the specified file descriptor.
 @param c Character to output.
 @param fd File descriptor on which to write. */
-void	ft_putchar_fd(char c, int fd);
+int		ft_putchar_fd(int c, int fd);
 
 /* Outputs the string `s` to
 the specified file descriptor.
 @param s String to output.
 @param fd File descriptor on which to write. */
-void	ft_putstr_fd(char *s, int fd);
+int		ft_putstr_fd(char *s, int fd);
 
 /* Outputs the string `s` to
 the specified file descriptor,
 followed by a newline.
 @param s String to output.
 @param fd File descriptor on which to write. */
-void	ft_putendl_fd(char *s, int fd);
+int		ft_putendl_fd(char *s, int fd);
 
 /* Outputs the integer `n` to
 the specified file descriptor.
 @param n Integer to output.
 @param fd File descriptor on which to write. */
-void	ft_putnbr_fd(int n, int fd);
+int		ft_putnbr_fd(int n, int fd);
 
 /*
 BONUS PART
@@ -365,5 +370,28 @@ delete the content of a node if needed.
 node’s content if needed.
 @return New list. `NULL` if the allocation fails. */
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+/*
+ft_printf
+*/
+
+/* Write a number as an unsigned int.
+@param n Number to write.
+@return Number of characters written. */
+int		ft_putunbr_fd(unsigned int n, int fd);
+
+/* Write a number as a hexadecimal value.
+@param n Number to write.
+@param lettercase Whether to write in upper- or lowercase.
+@return Number of characters written. */
+int		ft_puthex_fd(unsigned long long n, char lettercase, int fd);
+
+/* Write a pointer as a hexadecimal value.
+@param n Pointer to write.
+@return Number of characters written. */
+int		ft_putptr_fd(unsigned long long n, int fd);
+
+/* Formats input using various options and writes to `stdout`. */
+int		ft_printf(const char *s, ...);
 
 #endif
