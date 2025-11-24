@@ -6,7 +6,7 @@
 /*   By: ekramer <ekramer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 16:34:29 by ekramer           #+#    #+#             */
-/*   Updated: 2025/10/29 13:05:09 by ekramer          ###   ########.fr       */
+/*   Updated: 2025/11/24 21:38:30 by ekramer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,7 +222,7 @@ The NUL-terminator is included in `len`.
 @param len Maximum length of the substring.
 @return Pointer to a new substring.
 `NULL` if the allocation fails. */
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_substr(const char *s, unsigned int start, size_t len);
 
 /* Allocates memory using `malloc(3)` and returns a
 new string, which is the result of concatenating `s1` and `s2`.
@@ -230,7 +230,7 @@ new string, which is the result of concatenating `s1` and `s2`.
 @param s2 Suffix string.
 @return Pointer to a new, joined string.
 `NULL` if the allocation fails. */
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(const char *s1, const char *s2);
 
 /* Allocates memory using `malloc(3)` and returns
 a copy of `s1` with characters from `set` removed
@@ -239,7 +239,7 @@ from the beginning and the end.
 @param set String containing the set of characters to be removed.
 @return Pointer to a new, trimmed string.
 `NULL` if the allocation fails. */
-char	*ft_strtrim(char const *s1, char const *set);
+char	*ft_strtrim(const char *s, const char *set);
 
 /* Allocates memory using `malloc(3)` and returns
 an array of strings obtained by splitting `s` using

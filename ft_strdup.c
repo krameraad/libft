@@ -6,7 +6,7 @@
 /*   By: ekramer <ekramer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 20:08:31 by ekramer           #+#    #+#             */
-/*   Updated: 2025/10/28 17:00:43 by ekramer          ###   ########.fr       */
+/*   Updated: 2025/11/24 21:45:50 by ekramer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strdup(const char *src)
 	char	*dest;
 
 	len = ft_strlen(src) + 1;
-	dest = malloc(len);
+	dest = malloc(len * sizeof(*src));
 	if (dest == NULL)
 		return (NULL);
 	ft_strlcpy(dest, src, len);

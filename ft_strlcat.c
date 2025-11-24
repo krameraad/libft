@@ -6,7 +6,7 @@
 /*   By: ekramer <ekramer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 11:40:02 by ekramer           #+#    #+#             */
-/*   Updated: 2025/10/29 16:19:22 by ekramer          ###   ########.fr       */
+/*   Updated: 2025/11/24 21:43:10 by ekramer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	dstlen;
-	size_t	srclen;
 
 	dstlen = ft_strlen(dst);
-	srclen = ft_strlen(src);
 	if (dstlen > size)
-		return (size + srclen);
+		return (size + ft_strlen(src));
 	ft_strlcpy(dst + dstlen, src, size - dstlen);
-	return (dstlen + srclen);
+	return (dstlen + ft_strlen(src));
 }

@@ -6,65 +6,25 @@
 /*   By: ekramer <ekramer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 14:35:49 by ekramer           #+#    #+#             */
-/*   Updated: 2025/10/29 20:32:29 by ekramer          ###   ########.fr       */
+/*   Updated: 2025/11/24 21:41:06 by ekramer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char const	*find_trimstart(char const *s1, char const *set)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	j = 0;
-	while (set[j])
-	{
-		if (s1[i] == set[j])
-		{
-			j = 0;
-			i++;
-		}
-		else
-			j++;
-	}
-	return (s1 + i);
-}
-
-static size_t	find_trimend(char const *s1, char const *set)
-{
-	size_t	i;
-	size_t	j;
-
-	if (*s1 == '\0')
-		return (0);
-	i = ft_strlen(s1) - 1;
-	j = 0;
-	while (i >= 0 && set[j])
-	{
-		if (s1[i] == set[j])
-		{
-			j = 0;
-			if (i)
-				i--;
-		}
-		else
-			j++;
-	}
-	return (i + 1);
-}
-
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(const char *s, const char *set)
 {
 	char	*str;
 	size_t	size;
 
-	s1 = find_trimstart(s1, set);
-	size = find_trimend(s1, set);
+	while (*s && ft_strchr(set, *s))
+		s++;
+	size = ft_strlen(s);
+	while (size > 0 && ft_strrchr(set, s[size - 1]))
+		size--;
 	str = malloc((size + 1) * sizeof(char));
 	if (str == NULL)
 		return (NULL);
-	ft_strlcpy(str, s1, size + 1);
+	ft_strlcpy(str, s, size + 1);
 	return (str);
 }
