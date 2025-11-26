@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ekramer <ekramer@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/06 16:34:29 by ekramer           #+#    #+#             */
-/*   Updated: 2025/11/24 22:26:20 by ekramer          ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   libft.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ekramer <ekramer@student.42.fr>              +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/11/26 16:36:06 by ekramer       #+#    #+#                 */
+/*   Updated: 2025/11/26 16:36:06 by ekramer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@
 # include <stdlib.h>
 /* Used for `va_list` */
 # include <stdarg.h>
-
-# define UPPERCASE 1
-# define LOWERCASE 0
+/* Used for `ft_printf` */
+# include <stdbool.h>
 
 typedef struct s_list
 {
@@ -285,26 +284,30 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 /* Outputs the character `c` to
 the specified file descriptor.
 @param c Character to output.
-@param fd File descriptor on which to write. */
+@param fd File descriptor on which to write.
+@return Number of characters written. */
 int		ft_putchar_fd(int c, int fd);
 
 /* Outputs the string `s` to
 the specified file descriptor.
 @param s String to output.
-@param fd File descriptor on which to write. */
+@param fd File descriptor on which to write.
+@return Number of characters written. */
 int		ft_putstr_fd(char *s, int fd);
 
 /* Outputs the string `s` to
 the specified file descriptor,
 followed by a newline.
 @param s String to output.
-@param fd File descriptor on which to write. */
+@param fd File descriptor on which to write.
+@return Number of characters written. */
 int		ft_putendl_fd(char *s, int fd);
 
 /* Outputs the integer `n` to
 the specified file descriptor.
 @param n Integer to output.
-@param fd File descriptor on which to write. */
+@param fd File descriptor on which to write.
+@return Number of characters written. */
 int		ft_putnbr_fd(int n, int fd);
 
 /*
@@ -391,7 +394,11 @@ int		ft_puthex_fd(unsigned long long n, char lettercase, int fd);
 @return Number of characters written. */
 int		ft_putptr_fd(unsigned long long n, int fd);
 
-/* Formats input using various options and writes to `stdout`. */
+/* Formats input using various options and writes to `stdout`.
+@param s String to write. `%` serves as an escape character,
+permitting the conversion specifiers `cspdiuxX%`.
+@param ... Arguments to write.
+@return Number of characters written. */
 int		ft_printf(const char *s, ...);
 
 #endif

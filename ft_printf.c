@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ekramer <ekramer@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/24 22:23:21 by ekramer           #+#    #+#             */
-/*   Updated: 2025/11/24 22:24:41 by ekramer          ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   ft_printf.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ekramer <ekramer@student.42.fr>              +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/11/26 16:36:22 by ekramer       #+#    #+#                 */
+/*   Updated: 2025/11/26 16:36:22 by ekramer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,14 @@ static int	convert(const char c, va_list args)
 		return (ft_putstr_fd(va_arg(args, char *), 1));
 	if (c == 'p')
 		return (ft_putptr_fd(va_arg(args, unsigned long long), 1));
-	if (c == 'd')
-		return (ft_putnbr_fd(va_arg(args, int), 1));
-	if (c == 'i')
+	if (c == 'd' || c == 'i')
 		return (ft_putnbr_fd(va_arg(args, int), 1));
 	if (c == 'u')
 		return (ft_putunbr_fd(va_arg(args, unsigned int), 1));
 	if (c == 'x')
-		return (ft_puthex_fd(va_arg(args, unsigned int), LOWERCASE, 1));
+		return (ft_puthex_fd(va_arg(args, unsigned int), false, 1));
 	if (c == 'X')
-		return (ft_puthex_fd(va_arg(args, unsigned int), UPPERCASE, 1));
+		return (ft_puthex_fd(va_arg(args, unsigned int), true, 1));
 	if (c == '%')
 		return (ft_putchar_fd('%', 1));
 	return (ft_putchar_fd('%', 1) + ft_putchar_fd(c, 1));
