@@ -6,7 +6,7 @@
 /*   By: ekramer <ekramer@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/11/26 16:36:06 by ekramer       #+#    #+#                 */
-/*   Updated: 2025/11/26 16:36:06 by ekramer       ########   odam.nl         */
+/*   Updated: 2025/12/02 17:21:20 by ekramer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -385,9 +385,9 @@ int		ft_putunbr_fd(unsigned int n, int fd);
 
 /* Write a number as a hexadecimal value.
 @param n Number to write.
-@param lettercase Whether to write in upper- or lowercase.
+@param uppercase Whether to write in upper- or lowercase.
 @return Number of characters written. */
-int		ft_puthex_fd(unsigned long long n, char lettercase, int fd);
+int		ft_puthex_fd(unsigned long long n, char uppercase, int fd);
 
 /* Write a pointer as a hexadecimal value.
 @param n Pointer to write.
