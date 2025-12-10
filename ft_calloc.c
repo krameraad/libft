@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ekramer <ekramer@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/07 17:05:22 by ekramer           #+#    #+#             */
-/*   Updated: 2025/10/29 19:20:17 by ekramer          ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   ft_calloc.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ekramer <ekramer@student.42.fr>              +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/12/10 00:48:47 by ekramer       #+#    #+#                 */
+/*   Updated: 2025/12/10 00:48:47 by ekramer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	char	*s;
+	void	*s;
 	size_t	totalsize;
 
 	totalsize = nmemb * size;

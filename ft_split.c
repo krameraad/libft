@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ekramer <ekramer@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/13 12:48:03 by ekramer           #+#    #+#             */
-/*   Updated: 2025/10/27 14:26:39 by ekramer          ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   ft_split.c                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ekramer <ekramer@student.42.fr>              +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/12/10 01:37:14 by ekramer       #+#    #+#                 */
+/*   Updated: 2025/12/10 01:37:14 by ekramer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-// @return Index of the first character in `s` that isn't `c`.
-static size_t	skip_char(char const *s, char c)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] && s[i] == c)
-		i++;
-	return (i);
-}
 
 // @return Index of the first character in `s` which is the same as `c`.
 static size_t	find_next(char const *s, char c)
@@ -40,12 +29,14 @@ static size_t	wordcount(char const *s, char c)
 	size_t	count;
 
 	count = 0;
-	s += skip_char(s, c);
+	while (*s != '\0' && *s == c) // s += skip_char(s, c);
+		s++;
 	while (*s != '\0')
 	{
 		count++;
 		s += find_next(s, c);
-		s += skip_char(s, c);
+		while (*s != '\0' && *s == c) // s += skip_char(s, c);
+			s++;
 	}
 	return (count);
 }
@@ -74,19 +65,18 @@ char	**ft_split(char const *s, char c)
 	strs = malloc((wordcount(s, c) + 1) * sizeof(char *));
 	if (strs == NULL)
 		return (NULL);
-	s += skip_char(s, c);
+	while (*s != '\0' && *s == c) // s += skip_char(s, c);
+		s++;
 	len = find_next(s, c);
 	i = 0;
 	while (len != 0)
 	{
 		strs[i] = ft_substr(s, 0, len);
 		if (strs[i] == NULL)
-		{
-			freeall(strs);
-			return (NULL);
-		}
+			return (freeall(strs), NULL);
 		s += len;
-		s += skip_char(s, c);
+		while (*s != '\0' && *s == c) // s += skip_char(s, c);
+			s++;
 		len = find_next(s, c);
 		i++;
 	}

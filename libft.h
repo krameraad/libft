@@ -234,7 +234,7 @@ new string, which is the result of concatenating `s1` and `s2`.
 @param s2 Suffix string.
 @return Pointer to a new, joined string.
 `NULL` if the allocation fails. */
-char	*ft_strjoin(const char *s1, const char *s2);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 /* Allocates memory using `malloc(3)` and returns
 a copy of `s` with characters from `set` removed
