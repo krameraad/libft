@@ -11,7 +11,8 @@ ft_strnstr.c ft_substr.c ft_strtrim.c ft_tolower.c ft_toupper.c \
 ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
 ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
 ft_lstclear.c ft_lstiter.c ft_lstmap.c \
-ft_printf.c ft_putunbr_fd.c ft_puthex_fd.c ft_putptr_fd.c
+ft_printf.c ft_putunbr_fd.c ft_puthex_fd.c ft_putptr_fd.c \
+get_next_line.c
 OBJ = $(SRC:.c=.o)
 
 # Commands --------------------------------------------------------------------
