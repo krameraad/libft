@@ -6,7 +6,7 @@
 /*   By: ekramer <ekramer@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/12/10 01:37:14 by ekramer       #+#    #+#                 */
-/*   Updated: 2025/12/10 01:37:14 by ekramer       ########   odam.nl         */
+/*   Updated: 2025/12/23 23:58:04 by ekramer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ static size_t	wordcount(char const *s, char c)
 	size_t	count;
 
 	count = 0;
-	while (*s != '\0' && *s == c) // s += skip_char(s, c);
+	while (*s != '\0' && *s == c)
 		s++;
 	while (*s != '\0')
 	{
 		count++;
 		s += find_next(s, c);
-		while (*s != '\0' && *s == c) // s += skip_char(s, c);
+		while (*s != '\0' && *s == c)
 			s++;
 	}
 	return (count);
@@ -65,7 +65,7 @@ char	**ft_split(char const *s, char c)
 	strs = malloc((wordcount(s, c) + 1) * sizeof(char *));
 	if (strs == NULL)
 		return (NULL);
-	while (*s != '\0' && *s == c) // s += skip_char(s, c);
+	while (*s != '\0' && *s == c)
 		s++;
 	len = find_next(s, c);
 	i = 0;
@@ -75,7 +75,7 @@ char	**ft_split(char const *s, char c)
 		if (strs[i] == NULL)
 			return (freeall(strs), NULL);
 		s += len;
-		while (*s != '\0' && *s == c) // s += skip_char(s, c);
+		while (*s != '\0' && *s == c)
 			s++;
 		len = find_next(s, c);
 		i++;

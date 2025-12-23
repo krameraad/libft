@@ -6,7 +6,7 @@
 /*   By: ekramer <ekramer@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/11/26 16:36:06 by ekramer       #+#    #+#                 */
-/*   Updated: 2025/12/02 17:21:20 by ekramer       ########   odam.nl         */
+/*   Updated: 2025/12/23 23:39:04 by ekramer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,8 @@
 /* Used for `ft_printf` */
 # include <stdbool.h>
 
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
-
 /*
-PART 1
+	PART 1
 */
 
 /* Checks if character `c` is alphabetical.
@@ -213,7 +207,7 @@ It returns `NULL` if insufficient memory was available. */
 char	*ft_strdup(const char *s);
 
 /*
-PART 2
+	PART 2
 */
 
 /* Allocates memory using `malloc(3)` and returns
@@ -311,8 +305,14 @@ the specified file descriptor.
 int		ft_putnbr_fd(int n, int fd);
 
 /*
-BONUS PART
+	BONUS PART
 */
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
 /* Allocates memory using `malloc(3)` and returns
 a new node. The `content` member variable is
@@ -375,7 +375,7 @@ node’s content if needed.
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /*
-ft_printf
+	ft_printf
 */
 
 /* Write a number as an unsigned int.
@@ -400,5 +400,18 @@ permitting the conversion specifiers `cspdiuxX%`.
 @param ... Arguments to write.
 @return Number of characters written. */
 int		ft_printf(const char *s, ...);
+
+/*
+	get_next_line
+*/
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 64
+# endif
+
+/* Get a line from a file descriptor.
+@param fd File descriptor to read from.
+@return Line found.*/
+char	*get_next_line(int fd);
 
 #endif

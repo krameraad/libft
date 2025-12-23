@@ -6,12 +6,12 @@
 /*   By: ekramer <ekramer@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/11/26 16:35:36 by ekramer       #+#    #+#                 */
-/*   Updated: 2025/11/26 16:35:36 by ekramer       ########   odam.nl         */
+/*   Updated: 2025/12/23 23:40:34 by ekramer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
- 
+
 int	ft_puthex_fd(unsigned long long n, char uppercase, int fd)
 {
 	int		count;
