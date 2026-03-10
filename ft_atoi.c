@@ -6,7 +6,7 @@
 /*   By: ekramer <ekramer@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/06/17 13:12:54 by ekramer       #+#    #+#                 */
-/*   Updated: 2025/12/23 23:56:43 by ekramer       ########   odam.nl         */
+/*   Updated: 2026/01/24 03:46:03 by ekramer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ Whitespace characters: `'\t'`, `'\\n'`, `'\v'`,
 @return `1` if whitespace, otherwise `0`. */
 static int	whitespace(char c)
 {
-	if ((c >= 9 && c <= 13) || c == 32)
-		return (1);
-	return (0);
+	return ((c >= 9 && c <= 13) || c == 32);
 }
 
 int	ft_atoi(const char *str)
@@ -35,17 +33,11 @@ int	ft_atoi(const char *str)
 	total = 0;
 	i = 0;
 	while (whitespace(str[i]))
-		i++;
+		++i;
 	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
-	}
+		if (str[i++] == '-')
+			sign = -1;
 	while (str[i] >= '0' && str[i] <= '9')
-	{
-		total = (total * 10) + str[i] - '0';
-		i++;
-	}
+		total = (total * 10) + str[i++] - '0';
 	return (total * sign);
 }

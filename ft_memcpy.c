@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ekramer <ekramer@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/07 11:52:49 by ekramer           #+#    #+#             */
-/*   Updated: 2025/10/29 21:34:14 by ekramer          ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   ft_memcpy.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ekramer <ekramer@student.42.fr>              +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/10/07 11:52:49 by ekramer       #+#    #+#                 */
+/*   Updated: 2026/01/24 02:49:31 by ekramer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 		return (dest);
 	p_dest = dest;
 	p_src = src;
-	while (n > 0)
-	{
-		*p_dest = *p_src;
-		p_dest++;
-		p_src++;
-		n--;
-	}
+	while (n-- > 0)
+		*p_dest++ = *p_src++;
 	return (dest);
 }

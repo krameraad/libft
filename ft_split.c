@@ -6,36 +6,27 @@
 /*   By: ekramer <ekramer@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/12/10 01:37:14 by ekramer       #+#    #+#                 */
-/*   Updated: 2025/12/23 23:58:04 by ekramer       ########   odam.nl         */
+/*   Updated: 2026/01/24 02:10:19 by ekramer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// @return Index of the first character in `s` which is the same as `c`.
-static size_t	find_next(char const *s, char c)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] && s[i] != c)
-		i++;
-	return (i);
-}
-
 // @return Number of words in `s`, using `c` as a delimiter.
 static size_t	wordcount(char const *s, char c)
 {
 	size_t	count;
+	size_t	len;
 
 	count = 0;
-	while (*s != '\0' && *s == c)
+	while (*s == c)
 		s++;
 	while (*s != '\0')
 	{
 		count++;
-		s += find_next(s, c);
-		while (*s != '\0' && *s == c)
+		len = (size_t)ft_strchr(s, c);
+		s += len - (size_t)s * !!len + ft_strlen(s) * !len;
+		while (*s == c)
 			s++;
 	}
 	return (count);
@@ -65,9 +56,10 @@ char	**ft_split(char const *s, char c)
 	strs = malloc((wordcount(s, c) + 1) * sizeof(char *));
 	if (strs == NULL)
 		return (NULL);
-	while (*s != '\0' && *s == c)
+	while (*s == c)
 		s++;
-	len = find_next(s, c);
+	len = (size_t)ft_strchr(s, c);
+	len -= (size_t)s * !!len + ft_strlen(s) * !len;
 	i = 0;
 	while (len != 0)
 	{
@@ -75,9 +67,10 @@ char	**ft_split(char const *s, char c)
 		if (strs[i] == NULL)
 			return (freeall(strs), NULL);
 		s += len;
-		while (*s != '\0' && *s == c)
+		while (*s == c)
 			s++;
-		len = find_next(s, c);
+		len = (size_t)ft_strchr(s, c);
+		len -= (size_t)s * !!len + ft_strlen(s) * !len;
 		i++;
 	}
 	strs[i] = NULL;

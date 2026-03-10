@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ekramer <ekramer@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/07 11:52:49 by ekramer           #+#    #+#             */
-/*   Updated: 2025/10/28 19:57:19 by ekramer          ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   ft_memmove.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ekramer <ekramer@student.42.fr>              +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/10/07 11:52:49 by ekramer       #+#    #+#                 */
+/*   Updated: 2026/01/24 02:52:19 by ekramer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,10 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	const char	*p_src;
 
 	if (dest <= src)
-	{
-		ft_memcpy(dest, src, n);
-		return (dest);
-	}
+		return (ft_memcpy(dest, src, n));
 	p_dest = dest;
 	p_src = src;
-	while (n > 0)
-	{
-		p_dest[n - 1] = p_src[n - 1];
-		n--;
-	}
+	while (n-- > 0)
+		p_dest[n] = p_src[n];
 	return (dest);
 }

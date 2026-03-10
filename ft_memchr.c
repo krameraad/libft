@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ekramer <ekramer@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/09 14:10:32 by ekramer           #+#    #+#             */
-/*   Updated: 2025/10/28 19:52:46 by ekramer          ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   ft_memchr.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ekramer <ekramer@student.42.fr>              +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/10/09 14:10:32 by ekramer       #+#    #+#                 */
+/*   Updated: 2026/01/24 02:57:37 by ekramer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	const char	*ptr;
+	const char	*p;
 	size_t		i;
 
-	ptr = s;
+	p = s;
 	i = 0;
 	while (i < n)
 	{
-		if (ptr[i] == (char)c)
-			return ((char *)ptr + i);
+		if (p[i] == (char)c)
+			return ((char *)p + i);
 		i++;
 	}
 	return (NULL);

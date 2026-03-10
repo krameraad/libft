@@ -6,7 +6,7 @@
 /*   By: ekramer <ekramer@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/11/26 16:36:22 by ekramer       #+#    #+#                 */
-/*   Updated: 2025/11/26 16:36:22 by ekramer       ########   odam.nl         */
+/*   Updated: 2026/01/24 03:30:44 by ekramer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_printf(const char *s, ...)
 		if (s[i] == '%')
 		{
 			if (s[i + 1] == '\0')
-				return (-1);
+				return (va_end(args), -1);
 			count += convert(s[i + 1], args);
 			i += 2;
 		}

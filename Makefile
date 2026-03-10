@@ -1,6 +1,6 @@
 NAME = libft.a
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CC = cc -Wall -Wextra -Werror
+
 SRC = ft_isalpha.c ft_memcmp.c ft_putnbr_fd.c ft_strjoin.c \
 ft_isascii.c ft_memcpy.c ft_putstr_fd.c ft_strlcat.c ft_strrchr.c \
 ft_atoi.c ft_isdigit.c ft_memmove.c ft_split.c ft_strlcpy.c \
@@ -27,12 +27,15 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+test: all
+	$(CC) main.c $(NAME)
+
+.PHONY: all clean fclean re test
 
 # Files -----------------------------------------------------------------------
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) -c $< -o $@
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $^

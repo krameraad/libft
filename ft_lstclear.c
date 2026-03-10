@@ -6,7 +6,7 @@
 /*   By: ekramer <ekramer@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/11/26 16:37:11 by ekramer       #+#    #+#                 */
-/*   Updated: 2025/11/26 16:37:11 by ekramer       ########   odam.nl         */
+/*   Updated: 2026/01/24 03:18:47 by ekramer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,4 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 		*lst = (*lst)->next;
 		ft_lstdelone(prev, del);
 	}
-	lst = NULL;
 }
