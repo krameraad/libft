@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_puthex_fd.c                                     :+:    :+:            */
+/*   ft_putbase_fd.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ekramer <ekramer@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/11/26 16:35:36 by ekramer       #+#    #+#                 */
-/*   Updated: 2026/03/11 19:13:17 by ekramer       ########   odam.nl         */
+/*   Created: 2026/03/11 18:31:12 by ekramer       #+#    #+#                 */
+/*   Updated: 2026/03/11 19:13:11 by ekramer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_puthex_fd(unsigned long long n, char uppercase, int fd)
+int	ft_putbase_fd(\
+unsigned long long n, char const *base, unsigned int len, int fd)
 {
 	int	count;
 
 	count = 0;
-	if (n < 16)
-	{
-		if (n < 10)
-			return (ft_putchar_fd(n + '0', fd));
-		if (uppercase)
-			return (ft_putchar_fd(n - 10 + 'A', fd));
-		return (ft_putchar_fd(n - 10 + 'a', fd));
-	}
-	count += ft_puthex_fd(n / 16, uppercase, fd);
-	count += ft_puthex_fd(n % 16, uppercase, fd);
+	if (n < len)
+		return (ft_putchar_fd(base[n], fd));
+	count += ft_putbase_fd(n / len, base, len, fd);
+	count += ft_putbase_fd(n % len, base, len, fd);
 	return (count);
 }

@@ -6,7 +6,7 @@
 /*   By: ekramer <ekramer@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/06/16 17:22:33 by ekramer       #+#    #+#                 */
-/*   Updated: 2026/01/24 03:26:06 by ekramer       ########   odam.nl         */
+/*   Updated: 2026/03/11 19:13:20 by ekramer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_putnbr_fd(int n, int fd)
 {
-	int		count;
+	int	count;
 
 	count = 0;
 	if (n == -2147483648)

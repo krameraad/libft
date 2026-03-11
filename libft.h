@@ -6,7 +6,7 @@
 /*   By: ekramer <ekramer@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/11/26 16:36:06 by ekramer       #+#    #+#                 */
-/*   Updated: 2025/12/23 23:39:04 by ekramer       ########   odam.nl         */
+/*   Updated: 2026/03/11 19:14:58 by ekramer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -378,19 +378,35 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 	ft_printf
 */
 
+# define BASE_DEC "0123456789"
+# define BASE_UHEX "0123456789ABCDEF"
+# define BASE_LHEX "0123456789abcdef"
+
 /* Write a number as an unsigned int.
 @param n Number to write.
+@param fd File descriptor to write to.
 @return Number of characters written. */
 int		ft_putunbr_fd(unsigned int n, int fd);
 
 /* Write a number as a hexadecimal value.
 @param n Number to write.
 @param uppercase Whether to write in upper- or lowercase.
+@param fd File descriptor to write to.
 @return Number of characters written. */
 int		ft_puthex_fd(unsigned long long n, char uppercase, int fd);
 
+/* Write a number in any base.
+@param n Number to write.
+@param base Base as a string of characters.
+@param len Length of the base.
+@param fd File descriptor to write to.
+@return Number of characters written. */
+int		ft_putbase_fd(\
+unsigned long long n, char const *base, unsigned int len, int fd);
+
 /* Write a pointer as a hexadecimal value.
 @param n Pointer to write.
+@param fd File descriptor to write to.
 @return Number of characters written. */
 int		ft_putptr_fd(unsigned long long n, int fd);
 
