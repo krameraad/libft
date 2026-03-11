@@ -6,7 +6,7 @@
 /*   By: ekramer <ekramer@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/12/10 01:01:00 by ekramer       #+#    #+#                 */
-/*   Updated: 2026/03/11 19:49:52 by ekramer       ########   odam.nl         */
+/*   Updated: 2026/03/11 20:27:34 by ekramer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static unsigned char	intlen(int n)
 	if (n == 0)
 		return (1);
 	count = n < 0;
-	n *= 1 + -2 * (n < 0);
+	n *= 1 + -2 * count;
 	while (n)
 	{
 		n /= 10;
