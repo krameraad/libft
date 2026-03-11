@@ -6,28 +6,24 @@
 /*   By: ekramer <ekramer@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/12/10 01:01:00 by ekramer       #+#    #+#                 */
-/*   Updated: 2025/12/10 01:01:00 by ekramer       ########   odam.nl         */
+/*   Updated: 2026/03/11 19:49:52 by ekramer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static unsigned char	intlen(int i)
+static unsigned char	intlen(int n)
 {
 	unsigned char	count;
 
-	if (i == 0)
+	if (n == 0)
 		return (1);
-	count = 0;
-	if (i < 0)
+	count = n < 0;
+	n *= 1 + -2 * (n < 0);
+	while (n)
 	{
-		i *= -1;
-		count++;
-	}
-	while (i)
-	{
-		i /= 10;
-		count++;
+		n /= 10;
+		++count;
 	}
 	return (count);
 }
@@ -44,14 +40,11 @@ char	*ft_itoa(int n)
 	if (str == NULL)
 		return (NULL);
 	str[size] = '\0';
-	if (n < 0)
-	{
-		str[0] = '-';
-		n *= -1;
-	}
+	str[0] = '-' * (n < 0);
+	n *= 1 + -2 * (n < 0);
 	while (size && str[size - 1] != '-')
 	{
-		size--;
+		--size;
 		str[size] = (n % 10) + '0';
 		n /= 10;
 	}
