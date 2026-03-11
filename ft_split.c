@@ -6,7 +6,7 @@
 /*   By: ekramer <ekramer@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/12/10 01:37:14 by ekramer       #+#    #+#                 */
-/*   Updated: 2026/03/11 19:12:25 by ekramer       ########   odam.nl         */
+/*   Updated: 2026/03/11 19:20:15 by ekramer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,15 @@ static size_t	find_next(char const *s, char c)
 static size_t	wordcount(char const *s, char c)
 {
 	size_t	count;
-	size_t	len;
 
 	count = 0;
-	while (*s == c)
+	while (*s != '\0' && *s == c)
 		s++;
 	while (*s != '\0')
 	{
 		count++;
-		len = (size_t)ft_strchr(s, c);
-		s += len - (size_t)s * !!len + ft_strlen(s) * !len;
-		while (*s == c)
+		s += find_next(s, c);
+		while (*s != '\0' && *s == c)
 			s++;
 	}
 	return (count);

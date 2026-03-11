@@ -6,22 +6,11 @@
 /*   By: ekramer <ekramer@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/06/17 13:12:54 by ekramer       #+#    #+#                 */
-/*   Updated: 2026/01/24 03:46:03 by ekramer       ########   odam.nl         */
+/*   Updated: 2026/03/11 19:35:04 by ekramer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/* Checks if a character is whitespace.
-
-Whitespace characters: `'\t'`, `'\\n'`, `'\v'`,
-`'\f'`, `'\r'` (9 through 13) and `' '` (space / 32)
-@param c Character to test.
-@return `1` if whitespace, otherwise `0`. */
-static int	whitespace(char c)
-{
-	return ((c >= 9 && c <= 13) || c == 32);
-}
 
 int	ft_atoi(const char *str)
 {
@@ -29,15 +18,13 @@ int	ft_atoi(const char *str)
 	int	total;
 	int	i;
 
-	sign = 1;
 	total = 0;
 	i = 0;
-	while (whitespace(str[i]))
+	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == 32)
 		++i;
-	if (str[i] == '-' || str[i] == '+')
-		if (str[i++] == '-')
-			sign = -1;
+	sign = 1 + -2 * (str[i] == '-');
+	i += str[i] == '-' || str[i] == '+';
 	while (str[i] >= '0' && str[i] <= '9')
-		total = (total * 10) + str[i++] - '0';
+		total = total * 10 + str[i++] - '0';
 	return (total * sign);
 }
